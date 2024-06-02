@@ -5,9 +5,10 @@ import { Client } from 'node-appwrite';
 export default async ({ req, res, log, error }) => {
   const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+    .setProject(String(process.env.APPWRITE_FUNCTION_PROJECT_ID))
 
   const { userId, secret } = req.query
+  console.log(userId)
   if (!userId || !secret) {
     return res.status(400).json({ error: 'User ID and secret are required' });
   }
@@ -22,6 +23,7 @@ export default async ({ req, res, log, error }) => {
     }
     )
   } catch (error: any) {
+    console.log(error)
     return res.status(200).json({
       errorMessage: "Error Verifying user email",
       error: error.response
