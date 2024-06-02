@@ -3,15 +3,13 @@ import { Client } from 'node-appwrite';
 // This is your Appwrite function
 // It's executed each time we get a request
 export default async ({ req, res, log, error }) => {
-  console.log(String(process.env.APPWRITE_FUNCTION_PROJECT_ID))
   const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject(String(process.env.APPWRITE_FUNCTION_PROJECT_ID))
-
+  const account = new Account(client)
   const { userId, secret } = req.query
-  console.log(userId)
   if (!userId || !secret) {
-    return res.status(400).json({ error: 'User ID and secret are required' });
+    return res.json({ error: 'User ID and secret are required' });
   }
 
   try {
@@ -19,13 +17,13 @@ export default async ({ req, res, log, error }) => {
       String(userId), // userId
       String(secret) // secret
     );
-    return res.status(200).json({
+    return res.json({
       message: "Email Verified"
     }
     )
   } catch (error) {
     console.log(error)
-    return res.status(200).json({
+    return res.json({
       errorMessage: "Error Verifying user email",
       error: error.response
     }
