@@ -23,7 +23,7 @@ export default async ({ req, res, log, error }) => {
       message: "Email Verified"
     }
     )
-  } catch (error: any) {
+  } catch (error) {
     context.log(error)
     return res.status(200).json({
       errorMessage: "Error Verifying user email",
