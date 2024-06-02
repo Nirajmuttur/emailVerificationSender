@@ -1,37 +1,17 @@
-# ⚡ Node.js Starter Function
 
-A simple starter function. Edit `src/main.js` to get started and create something awesome! 🚀
+# ⚡ Nodejs Appwrite Function
+
+Appwrite function which gets executed when user clicks the link which is sent for email verification and updates the email verification.🚀
 
 ## 🧰 Usage
 
-### GET /
+### GET /?userid=${userid}&secret=${secret}
 
-- Returns a "Hello, World!" message.
-
-**Response**
+- Returns a "Email Verified" message on successfull Email verification
 
 Sample `200` Response:
 
-```text
-Hello, World!
-```
-
-### POST, PUT, PATCH, DELETE /
-
-- Returns a "Learn More" JSON response.
-
-**Response**
-
-Sample `200` Response:
-
-```json
-{
-  "motto": "Build like a team of hundreds_",
-  "learn": "https://appwrite.io/docs",
-  "connect": "https://appwrite.io/discord",
-  "getInspired": "https://builtwith.appwrite.io"
-}
-```
+message: "Email Verified"
 
 ## ⚙️ Configuration
 
@@ -45,4 +25,5 @@ Sample `200` Response:
 
 ## 🔒 Environment Variables
 
-No environment variables required.
+- APPWRITE_FUNCTION_PROJECT_ID
+
